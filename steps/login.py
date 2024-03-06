@@ -28,8 +28,9 @@ def step_impl(context):
 
 
 @when('the user logs in with username "{username}" and password "{password}"')
-def step_impl(context, username, password):
+def step_impl(context, username, password):  # noqa: F811
     user = {'username': username, 'password': password}
+    context.current_page = context.current_page.login(user)
     context.current_page = context.current_page.login(user)
 
 
