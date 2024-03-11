@@ -2,7 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         // Basic launchers
-        
+        // Launcher to execute a single scenario selecting scenario name and pressing F5:
+        {
+            "name": "comprare price",
+            "type": "python",
+            "request": "launch",
+            "cwd": "/Users/bcnc/Library/CloudStorage/OneDrive-Telefonica/toolium-template/",
+            "module": "behave",
+            "env": {
+                "PYTHONPATH": "/Users/bcnc/Library/CloudStorage/OneDrive-Telefonica/toolium-template/"
+            },
+            "args": [
+                //"${file}",
+                "-n",
+                "comprare price"
+            ],
+            "stopOnEntry": false,
+            "justMyCode": false
+        },
+
         // Launcher to execute a single scenario selecting scenario name and pressing F5:
         {
             "name": "successful login",
