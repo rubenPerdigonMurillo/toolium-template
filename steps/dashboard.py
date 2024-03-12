@@ -10,7 +10,7 @@ def step_impl(context):
 
 @when('click accept cookies')
 def step_impl(context):
-    context.current_page = context.current_page.clickAccept()
+    context.current_page.clickAccept()
 
 @when('click busqueda')
 def step_impl(context):
@@ -19,32 +19,31 @@ def step_impl(context):
 @when('click search"')
 def step_impl(context, product):
     context.current_page = context.current_page.searchProduct(product)
-#
-#
-# @when('click "Precio"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: When click "Precio"')
-#
-# @then('verify price range product "<"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Then verify price range product "<"')
-#
-# @when('save first price and name product')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: When save first price and name product')
-#
-# @when('click first product')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: When click first product')
-#
-# @then('see "detalle del producto"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Then see "detalle del producto"')
-#
-# @when('click "Añadir"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: When click "Añadir"')
-#
+
+@when('search "{product}"')
+def step_impl(context, product):
+    context.current_page = context.current_page.searchProduct(product)
+
+@when('click precio')
+def step_impl(context):
+    context.current_page = context.current_page.clickPrice()
+
+@when('save first price and name product')
+def step_impl(context):
+    context.savedPrice = context.current_page.savePrice()
+
+@when('click first product')
+def step_impl(context):
+    context.current_page = context.current_page.clickDetail()
+
+@then('verify price')
+def step_impl(context):
+    assert context.savedPrice == context.current_page.get_Price(), "Price is not equal"
+
+@when('click Añadir')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: When click "Añadir"')
+
 # @then('verify add bucket product')
 # def step_impl(context):
 #     raise NotImplementedError(u'STEP: Then verify add bucket product')

@@ -23,13 +23,10 @@ class DashboardPageObject(PageObject):
 
     def clickAccept(self):
         self.logger.debug("accept")
-        self.acceptCookiesSel.wait_until_clickable(6)
-        self.acceptCookiesSel.click()
-        self.acceptCookiesSel.wait_until_not_visible(6)
+        self.acceptCookiesSel.wait_until_visible(6).click()
         return self
 
     def clickSearch(self):
         self.logger.debug("click search")
-        self.searchProductSel.wait_until_clickable(6).click()
-        self.searchProductSel.wait_until_not_visible(6)
+        self.searchProductSel.wait_until_visible(6).click()
         return SearchPageObject(self.driver_wrapper)
